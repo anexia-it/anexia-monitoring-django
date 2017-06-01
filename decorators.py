@@ -12,7 +12,7 @@ def access_token_check(func):
     def _is_authorized(request):
 
         # Access token GET param must be defined
-        if 'access_token' not in request.GET:
+        if 'access_token' not in request.request.GET:
             return False
 
         # Access token setting must be defined
@@ -20,7 +20,7 @@ def access_token_check(func):
             return False
 
         # Validate access token
-        if settings.ANX_MONITORING_ACCESS_TOKEN != request.GET['access_token']:
+        if settings.ANX_MONITORING_ACCESS_TOKEN != request.request.GET['access_token']:
             return False
 
         return True
