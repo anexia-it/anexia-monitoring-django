@@ -5,13 +5,12 @@ from updatable import get_package_update_list, get_parsed_environment_package_li
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import get_user_model
 from django.db import connections
-from django import dispatch
 from django.views.generic import View
 
 from .decorators import access_token_check
+from .events import monitor_up_check
 
 User = get_user_model()
-monitor_up_check = dispatch.Signal(providing_args=[])
 
 
 class BaseView(View):
