@@ -13,7 +13,7 @@ Install the package by using pip
 
 ::
 
-  pip install anexia-monitor
+  pip install anexia-monitoring
 
 Add the app the settings installed apps
 
@@ -22,7 +22,7 @@ Add the app the settings installed apps
  INSTALLED_APPS = [
     ...
     # Anexia monitor
-    'anexia_monitor',
+    'anexia_monitoring',
     ...
   ]
 
@@ -36,11 +36,11 @@ Add URL configuration for REST endpoint
 
 ::
 
- from anexia_monitor import urls as monitor_urls
+ from anexia_monitoring import urls as monitor_urls
   ...
   urlpatterns = [
     ...
-    # Anexia monitor
+    # Anexia monitoring
     url(r'^', include(monitor_urls)),
     ...
 ]
@@ -151,7 +151,7 @@ This check can be defined into the app even subscribers
 ::
 
  from django.dispatch import receiver
-  from anexia_monitor.events import monitor_up_check
+  from anexia_monitoring.events import monitor_up_check
 
   @receiver(monitor_up_check)
   def list_of_complete_polls_handler(sender, **kwargs):

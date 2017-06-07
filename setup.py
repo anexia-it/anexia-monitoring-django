@@ -9,12 +9,12 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='anexia-monitor',
+    name='django-anexia-monitoring',
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
-    description='Finds packages that require updates on a python environment.',
+    description='A Django app used to monitor updates for Django and all installed python packages in the running environment. It can be also used to check if the website is alive and working correctly.',
     long_description=README,
     url='http://www.anexia-it.com/',
     author='Anexia',

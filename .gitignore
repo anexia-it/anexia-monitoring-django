@@ -2,4 +2,4 @@
 *.pyc
 venv/**
 dist/**
-anexia_monitor.egg-info/**
+django_anexia_monitoring.egg-info/**
