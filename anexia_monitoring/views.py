@@ -38,7 +38,7 @@ class BaseView(View):
 class MonitorModulesView(BaseView):
     """
     A view that returns a list of all modules installed on the current environment, having current and latest version
-    of the module. It also contains information about the platform (python and django version).
+    of the module. It also contains information about the runtime (python and django version).
     """
 
     @access_token_check
@@ -61,7 +61,7 @@ class MonitorModulesView(BaseView):
                     'newest_version': package_data['latest_release'],
                 })
 
-        platform = {
+        runtime = {
             'platform': 'python',
             'platform_version': sys.version,
             'framework': 'django',
@@ -70,7 +70,7 @@ class MonitorModulesView(BaseView):
         }
 
         data = {
-            'platform': platform,
+            'runtime': runtime,
             'modules': modules,
         }
 
