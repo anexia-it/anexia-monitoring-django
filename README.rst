@@ -1,4 +1,4 @@
-Anexia monitoring
+Anexia Monitoring
 =================
 
 A Django app used to monitor updates for Django and all installed python
@@ -13,7 +13,7 @@ Install the package by using pip
 
 ::
 
-  pip install anexia-monitoring
+  pip install djnago-anexia-monitoring
 
 Add the app the settings installed apps
 
