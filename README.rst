@@ -1,3 +1,4 @@
+=================
 Anexia Monitoring
 =================
 
@@ -11,15 +12,15 @@ Installation and configuration
 
 Install the package by using pip
 
-::
+.. code-block:: bash
 
   pip install djnago-anexia-monitoring
 
 Add the app the settings installed apps
 
-::
+.. code-block:: python
 
- INSTALLED_APPS = [
+  INSTALLED_APPS = [
     ...
     # Anexia monitor
     'anexia_monitoring',
@@ -28,22 +29,22 @@ Add the app the settings installed apps
 
 In the projects settings.py add the access token configuration:
 
-::
+.. code-block:: python
 
   ANX_MONITORING_ACCESS_TOKEN = 'custom_access_token'
 
 Add URL configuration for REST endpoint
 
-::
+.. code-block:: python
 
- from anexia_monitoring import urls as monitor_urls
+  from anexia_monitoring import urls as monitor_urls
   ...
   urlpatterns = [
     ...
     # Anexia monitoring
     url(r'^', include(monitor_urls)),
     ...
-]
+  ]
 
 Usage
 -----
@@ -55,7 +56,7 @@ a 401 HTTP\_STATUS code if the token is not define or invalid, and a
 200 status code otherwise.
 
 Version monitoring
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 Returns all a list with platform and module information.
 
@@ -63,9 +64,9 @@ Returns all a list with platform and module information.
 
 Response headers:
 
-::
+.. code-block:: text
 
- Status Code: 200 OK
+  Status Code: 200 OK
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Credentials: true
   Allow: GET
@@ -73,7 +74,7 @@ Response headers:
 
 Response body:
 
-::
+.. code-block:: json
 
   {
      "platform":{
@@ -129,9 +130,9 @@ the dispatched **monitor_up_check** event.
 
 Response headers:
 
-::
+.. code-block:: text
 
- Status Code: 200 OK
+  Status Code: 200 OK
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Credentials: true
   Allow: GET
@@ -139,7 +140,7 @@ Response headers:
 
 Response body:
 
-::
+.. code-block:: text
 
     OK
 
@@ -148,9 +149,9 @@ Custom live monitoring event
 
 This check can be defined into the app even subscribers
 
-::
+.. code-block:: python
 
- from django.dispatch import receiver
+  from django.dispatch import receiver
   from anexia_monitoring.events import monitor_up_check
 
   @receiver(monitor_up_check)
