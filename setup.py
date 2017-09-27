@@ -1,35 +1,102 @@
+# -*- coding: utf-8 -*-
+
+# Note: To use the 'upload' functionality of this file, you must:
+#   $ pip install twine
+
 import os
+import io
+import sys
+from shutil import rmtree
 
-from setuptools import find_packages, setup
+from setuptools import find_packages, setup, Command
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
-    README = readme.read()
-
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-
-setup(
-    name='django-anexia-monitoring',
-    version='1.0.0',
-    packages=find_packages(),
-    include_package_data=True,
-    license='MIT License',
-    description='A Django app used to monitor updates for Django and all installed python packages in the running environment. It can be also used to check if the website is alive and working correctly.',
-    long_description=README,
-    url='http://www.anexia-it.com/',
-    author='Anexia',
-    classifiers=[
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
+# Package meta-data.
+NAME = 'django-anexia-monitoring'
+PACKAGE_PATH = 'anexia_monitoring'
+DESCRIPTION = 'A Django app used to monitor updates for Django and all installed python packages in the running environment. It can be also used to check if the website is alive and working correctly.'
+URL = 'https://github.com/anx-hnezbeda/anexia-monitoring-django'
+AUTHOR = 'Anexia'
+LICENSE = 'MIT'
+REQUIRED = [
+    'updatable',
+]
+CLASSIFIERS = [
         'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
-    ],
-    install_requires=[
-        'updatable',
-    ],
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Natural Language :: English',
+        'Topic :: Utilities',
+]
+
+# Setup configuration
+current_path = os.path.abspath(os.path.dirname(__file__))
+
+# Import the README and use it as the long-description.
+# Note: this will only work if 'README.rst' is present in your MANIFEST.in file!
+with io.open(os.path.join(current_path, 'README.rst'), encoding='utf-8') as f:
+    long_description = '\n' + f.read()
+
+# Load the package's __version__.py module as a dictionary.
+about = {}
+with open(os.path.join(current_path, PACKAGE_PATH, '__version__.py')) as f:
+    exec(f.read(), about)
+
+class PublishCommand(Command):
+    """Support setup.py publish."""
+
+    description = 'Build and publish the package.'
+    user_options = []
+
+    @staticmethod
+    def status(s):
+        """Prints things in bold."""
+        print('\033[1m{0}\033[0m'.format(s))
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        try:
+            self.status('Removing previous builds…')
+            rmtree(os.path.join(current_path, 'dist'))
+        except FileNotFoundError:
+            pass
+
+        self.status('Building Source and Wheel (universal) distribution…')
+        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+
+        self.status('Uploading the package to PyPi via Twine…')
+        os.system('twine upload dist/*')
+
+        sys.exit()
+
+setup(
+    name=NAME,
+    version=about['__version__'],
+    packages=find_packages(),
+    include_package_data=True,
+    license=LICENSE,
+    description=DESCRIPTION,
+    long_description=long_description,
+    url=URL,
+    author=AUTHOR,
+    classifiers=CLASSIFIERS,
+    install_requires=REQUIRED,
+    # $ setup.py publish support.
+    cmdclass={
+        'publish': PublishCommand,
+    },
 )
