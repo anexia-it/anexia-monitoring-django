@@ -49,17 +49,23 @@ class MonitorModulesView(BaseView):
         for package in packages:
             package_data = get_package_update_list(package['package'], package['version'])
 
+            modules.append({
+                'name': package['package'],
+                'installed_version': package['version'],
+                'installed_version_licences': [
+                    package_data['current_release_license'],
+                ],
+                'newest_version': package_data['latest_release'],
+                'newest_version_licences': [
+                    package_data['latest_release_license'],
+                ],
+            })
+
             if package['package'] == 'Django':
                 django_data = {
                     'installed_version': package['version'],
                     'newest_version': package_data['latest_release'],
                 }
-            else:
-                modules.append({
-                    'name': package['package'],
-                    'installed_version': package['version'],
-                    'newest_version': package_data['latest_release'],
-                })
 
         runtime = {
             'platform': 'python',

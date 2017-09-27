@@ -18,7 +18,7 @@ URL = 'https://github.com/anx-hnezbeda/anexia-monitoring-django'
 AUTHOR = 'Anexia'
 LICENSE = 'MIT'
 REQUIRED = [
-    'updatable',
+    'updatable>=0.2,<0.3',
 ]
 CLASSIFIERS = [
         'License :: OSI Approved :: MIT License',
@@ -71,8 +71,8 @@ class PublishCommand(Command):
     def run(self):
         try:
             self.status('Removing previous builds…')
-            rmtree(os.path.join(current_path, 'dist'))
-        except FileNotFoundError:
+            rmtree(os.path.join(here, 'dist'))
+        except OSError:
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')

@@ -80,40 +80,43 @@ Response body:
      "platform":{
         "platform":"python",
         "framework_installed_version":"1.11.1",
-        "framework_newest_version":"1.11.2",
+        "framework_newest_version":"2.0a1",
         "framework":"django",
         "platform_version":"3.5.3 (default, Apr 26 2017, 20:12:19) \n[GCC 4.9.2]"
      },
      "modules":[
         {
-           "newest_version":"0.7.10",
-           "name":"alabaster",
-           "installed_version":"0.7.10"
-        },
-        {
            "newest_version":"1.4.3",
+           "newest_version_licences": [
+             "MIT"
+           ],
            "name":"appdirs",
-           "installed_version":"1.4.3"
+           "installed_version":"1.4.3",
+           "installed_version_licences": [
+             "MIT"
+           ]
         },
         {
            "newest_version":"0.22.0",
+           "newest_version_licences": [
+             "MIT"
+           ],
            "name":"asn1crypto",
-           "installed_version":"0.22.0"
+           "installed_version":"0.22.0",
+           "installed_version_licences": [
+             "MIT"
+           ],
         },
         {
            "newest_version":"2.4.0",
+           "newest_version_licences": [
+             "BSD"
+           ],
            "name":"Babel",
-           "installed_version":"2.4.0"
-        },
-        {
-           "newest_version":"1.10.0",
-           "name":"cffi",
-           "installed_version":"1.10.0"
-        },
-        {
-           "newest_version":"0.7.3",
-           "name":"CommonMark",
-           "installed_version":"0.5.4"
+           "installed_version":"2.4.0",
+           "installed_version_licences": [
+             "BSD"
+           ],
         }
      ]
   }

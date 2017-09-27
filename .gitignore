@@ -1,5 +1,6 @@
 .idea
 *.pyc
+build/**
 venv/**
 dist/**
 django_anexia_monitoring.egg-info/**
