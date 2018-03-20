@@ -69,7 +69,7 @@ class PublishCommand(Command):
     def run(self):
         try:
             self.status('Removing previous builds…')
-            rmtree(os.path.join(here, 'dist'))
+            rmtree(os.path.join(current_path, 'dist'))
         except OSError:
             pass
 
