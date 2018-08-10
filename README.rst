@@ -14,7 +14,7 @@ Install the package by using pip
 
 .. code-block:: bash
 
-  pip install djnago-anexia-monitoring
+  pip install django-anexia-monitoring
 
 Add the app the settings installed apps
 
