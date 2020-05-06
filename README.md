@@ -159,6 +159,19 @@ def list_of_complete_polls_handler(sender, **kwargs):
     pass
 ```
 
+#### Live monitoring settings
+
+The User table is used in most Django applications and by default the `up` endpoint will make a test query to this
+table. If you don't need it you can disable it using the `ANX_MONITORING_TEST_QUERY_USERS` setting.
+
+Similar most Django applications also use a database connection which the module tests for connection by default.
+If you don't need this you can deactivate it by providing the `ANX_MONITORING_TEST_DB_CONNECTIONS` setting.
+
+```python
+ANX_MONITORING_TEST_QUERY_USERS = False
+ANX_MONITORING_TEST_DB_CONNECTIONS = False
+```
+
 List of developers
 ------------------
 
@@ -167,4 +180,4 @@ List of developers
 Project related external resources
 ----------------------------------
 
--   [Django documentation](https://docs.djangoproject.com/en/1.11/)
+-   [Django documentation](https://docs.djangoproject.com/en/2.2/)

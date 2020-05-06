@@ -6,11 +6,10 @@ from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import get_user_model
 from django.db import connections
 from django.views.generic import View
+from django.conf import settings
 
 from .decorators import access_token_check
 from .events import monitor_up_check
-
-User = get_user_model()
 
 
 class BaseView(View):
@@ -98,11 +97,14 @@ class MonitorUpView(BaseView):
     @access_token_check
     def get(self, request, *args, **kwargs):
         # Test database connections
-        for connection_key in connections:
-            connections[connection_key].cursor()
+        if getattr(settings, 'ANX_MONITORING_TEST_DB_CONNECTIONS', True):
+            for connection_key in connections:
+                connections[connection_key].cursor()
 
         # Query for users
-        User.objects.all().count()
+        if getattr(settings, 'ANX_MONITORING_TEST_QUERY_USERS', True):
+            User = get_user_model()
+            User.objects.all().count()
 
         # Registers signal for custom check
         monitor_up_check.send(sender=None)
