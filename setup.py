@@ -14,7 +14,7 @@ from setuptools import find_packages, setup, Command
 NAME = 'django-anexia-monitoring'
 PACKAGE_PATH = 'anexia_monitoring'
 DESCRIPTION = 'A Django app used to monitor updates for Django and all installed python packages in the running environment. It can be also used to check if the website is alive and working correctly.'
-URL = 'https://github.com/anx-hnezbeda/anexia-monitoring-django'
+URL = 'https://github.com/anexia-it/anexia-monitoring-django'
 AUTHOR = 'Anexia'
 LICENSE = 'MIT'
 REQUIRED = [
@@ -89,6 +89,7 @@ setup(
     license=LICENSE,
     description=DESCRIPTION,
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url=URL,
     author=AUTHOR,
     classifiers=CLASSIFIERS,
