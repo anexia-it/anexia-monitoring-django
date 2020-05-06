@@ -18,7 +18,7 @@ URL = 'https://github.com/anx-hnezbeda/anexia-monitoring-django'
 AUTHOR = 'Anexia'
 LICENSE = 'MIT'
 REQUIRED = [
-    'updatable>=0.4,<0.5',
+    'updatable>=0.4.1,<0.5',
 ]
 CLASSIFIERS = [
         'License :: OSI Approved :: MIT License',
@@ -41,8 +41,8 @@ CLASSIFIERS = [
 current_path = os.path.abspath(os.path.dirname(__file__))
 
 # Import the README and use it as the long-description.
-# Note: this will only work if 'README.rst' is present in your MANIFEST.in file!
-with io.open(os.path.join(current_path, 'README.rst'), encoding='utf-8') as f:
+# Note: this will only work if 'README.md' is present in your MANIFEST.in file!
+with io.open(os.path.join(current_path, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 # Load the package's __version__.py module as a dictionary.
