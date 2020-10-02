@@ -1,6 +1,8 @@
 Anexia Monitoring
 =================
 
+[![build-and-test actions status](https://github.com/anexia-it/anexia-monitoring-django/workflows/Module%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
+
 A Django app used to monitor updates for Django and all installed python
 packages in the running environment. It can be also used to check if the
 website is alive and working correctly.
