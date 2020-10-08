@@ -1,7 +1,8 @@
 Anexia Monitoring
 =================
 
-[![build-and-test actions status](https://github.com/anexia-it/anexia-monitoring-django/workflows/Module%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
+[![Linter and tests](hhttps://github.com/anexia-it/anexia-monitoring-django/workflows/Linter%20and%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
+[![Codecov](https://img.shields.io/codecov/c/gh/anexia-it/anexia-monitoring-django)](https://codecov.io/gh/anexia-it/anexia-monitoring-django)
 
 A Django app used to monitor updates for Django and all installed python
 packages in the running environment. It can be also used to check if the
