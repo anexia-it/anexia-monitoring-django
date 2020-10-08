@@ -1,0 +1,69 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.3.0 - Unreleased]
+### Added
+- Created CHANGELOG
+
+### Changed
+- Enhanced README with GitHub shields (badges)
+
+## [1.2.0]
+### Added
+- New setting: ANX_MONITORING_TEST_QUERY_USERS (Default: True)
+- New setting: ANX_MONITORING_TEST_DB_CONNECTIONS (Default: True)
+- Added support for Python 3.7
+- Added support for Python 3.8
+- Added test project
+- Added GitHub workflow action to run tests
+
+### Changed
+- Pinned dependency `updatable` to a version >= 0.4.1 and < 0.5
+- Converted README from RST to MD
+
+### Fixed
+- Fixed README file name in setup
+
+### Removed
+- Dropped support for Python 3.4
+
+## [1.1.1]
+### Changed
+- Pinned dependency `updatable` to a version >= 0.3 and < 0.4
+
+### Removed
+- Dropped support for Python 2.6
+- Dropped support for Python 3.3
+
+### Fixed
+- Fixed removing previous builds in setup
+
+## [1.1.0]
+### Added
+- License fields to modules endpoint
+
+### Changed
+- Pinned dependency `updatable` to a version >= 0.2 and < 0.3
+- Overhauled setup.py
+- Improved README
+
+### Removed
+- Removed file `setup.cfg`
+
+## [1.0.0]
+### Changed
+- Renamed key `platform` to `runtime` in module response
+
+## [0.1.0]
+### Added
+- Initial Release
+
+[1.3.0 - Unreleased]: https://github.com/anexia-it/anexia-monitoring-django/
+[1.2.0]: https://pypi.org/project/django-anexia-monitoring/1.2.0/
+[1.1.1]: https://pypi.org/project/django-anexia-monitoring/1.1.1/
+[1.1.0]: https://pypi.org/project/django-anexia-monitoring/1.1.0/
+[1.0.0]: https://pypi.org/project/django-anexia-monitoring/1.0.0/
+[0.1.0]: https://pypi.org/project/django-anexia-monitoring/0.1.0/
