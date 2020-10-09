@@ -44,10 +44,6 @@ current_path = os.path.abspath(os.path.dirname(__file__))
 with io.open(os.path.join(current_path, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
-# Load the package's __version__.py module as a dictionary.
-about = {}
-with open(os.path.join(current_path, PACKAGE_PATH, '__version__.py')) as f:
-    exec(f.read(), about)
 
 class PublishCommand(Command):
     """Support setup.py publish."""
@@ -83,7 +79,7 @@ class PublishCommand(Command):
 
 setup(
     name=NAME,
-    version=about['__version__'],
+    version=os.getenv('PACKAGE_VERSION', '0.0.0').replace('refs/tags/', ''),
     packages=find_packages(),
     include_package_data=True,
     license=LICENSE,
