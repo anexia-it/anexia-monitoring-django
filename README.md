@@ -42,7 +42,7 @@ from anexia_monitoring import urls as monitor_urls
 urlpatterns = [
   ...
   # Anexia monitoring
-  url(r'^', include(monitor_urls)),
+  re_path(r'^', include(monitor_urls)),
   ...
 ]
 ```
