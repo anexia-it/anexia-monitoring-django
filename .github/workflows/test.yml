@@ -7,10 +7,12 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.5', '3.6', '3.7', '3.8']
-        django-version: ['2.2', '3.0']
+        django-version: ['2.2', '3.0', '3.1']
         exclude:
           - python-version: '3.5'
             django-version: '3.0'
+          - python-version: '3.5'
+            django-version: '3.1'
 
     steps:
       - uses: actions/checkout@v2
@@ -37,6 +39,10 @@ jobs:
 
       - name: Install package and dependencies
         run: pip install -e .
+
+      - name: Run checks
+        working-directory: ./tests/test_project/
+        run: python -Wd manage.py check
 
       - name: Run tests
         run: |
