@@ -8,6 +8,17 @@ A Django app used to monitor updates for Django and all installed python
 packages in the running environment. It can be also used to check if the
 website is alive and working correctly.
 
+Django Compatibility Matrix
+---------------------------
+
+If your project uses an older verison of Django, you can choose an older version of this project.
+
+| This Project | Python Version | Django Version |
+|--------------|----------------|----------------|
+| 1.3.*        | 3.5 - 3.9      | 2.2, 3.1, 3.2  |
+| 1.2.*        | 3.5 - 3.8      | 2.2, 3.0, 3.1  |
+| 1.1.*        | 2.7, 3.4, 3.5  | 1.8, 1.11      |
+
 Installation and configuration
 ------------------------------
 

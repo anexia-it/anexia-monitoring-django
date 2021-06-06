@@ -7,39 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0 - Unreleased]
 ### Added
 - Created CHANGELOG
+- Compatibility matrix
+- Support for Python 3.9
+- Support for Django 3.2
 
 ### Changed
 - Enhanced README with GitHub shields (badges)
+
+### Removed
+- Support for Django 3.0
 
 ## [1.2.0]
 ### Added
 - New setting: ANX_MONITORING_TEST_QUERY_USERS (Default: True)
 - New setting: ANX_MONITORING_TEST_DB_CONNECTIONS (Default: True)
-- Added support for Python 3.7
-- Added support for Python 3.8
-- Added test project
-- Added GitHub workflow action to run tests
+- Support for Python 3.7
+- Support for Python 3.8
+- Test project
+- GitHub workflow action to run tests
 
 ### Changed
 - Pinned dependency `updatable` to a version >= 0.4.1 and < 0.5
 - Converted README from RST to MD
 
 ### Fixed
-- Fixed README file name in setup
+- README file name in setup
 
 ### Removed
-- Dropped support for Python 3.4
+- Support for Python 3.4
 
 ## [1.1.1]
 ### Changed
 - Pinned dependency `updatable` to a version >= 0.3 and < 0.4
 
 ### Removed
-- Dropped support for Python 2.6
-- Dropped support for Python 3.3
+- Support for Python 2.6
+- Support for Python 3.3
 
 ### Fixed
-- Fixed removing previous builds in setup
+- Removing previous builds in setup
 
 ## [1.1.0]
 ### Added
