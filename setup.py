@@ -18,16 +18,15 @@ URL = 'https://github.com/anexia-it/anexia-monitoring-django'
 AUTHOR = 'Anexia'
 LICENSE = 'MIT'
 REQUIRED = [
-    'updatable>=0.4.1,<0.5',
+    'updatable>=0.6',
 ]
 CLASSIFIERS = [
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Intended Audience :: Developers',
