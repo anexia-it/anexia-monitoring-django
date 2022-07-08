@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 -
 
+## [1.4.1]
+
+### Changed
+- Pin updatable to `>=0.6,<0.7`
+
 ## [1.4.0]
 ### Added
 - Support for Python 3.10
@@ -90,6 +95,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 [1.5.0 - Unreleased]: https://github.com/anexia-it/anexia-monitoring-django/
+[1.4.1]: https://pypi.org/project/django-anexia-monitoring/1.4.1/
 [1.4.0]: https://pypi.org/project/django-anexia-monitoring/1.4.0/
 [1.3.0]: https://pypi.org/project/django-anexia-monitoring/1.3.0/
 [1.2.0]: https://pypi.org/project/django-anexia-monitoring/1.2.0/
