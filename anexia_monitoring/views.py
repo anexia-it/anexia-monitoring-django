@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+import asyncio
 import sys
+
 from updatable import get_package_update_list, get_parsed_environment_package_list
 
 from django.http import JsonResponse, HttpResponse
@@ -40,13 +42,24 @@ class MonitorModulesView(BaseView):
     of the module. It also contains information about the runtime (python and django version).
     """
 
-    @access_token_check
-    def get(self, request, *args, **kwargs):
+    async def get_response_data(self):
+        runtime = {
+            'platform': 'python',
+            'platform_version': sys.version,
+            'framework': 'django',
+            'framework_installed_version': None,
+            'framework_newest_version': None,
+        }
         modules = []
         packages = get_parsed_environment_package_list()
 
         for package in packages:
-            package_data = get_package_update_list(package['package'], package['version'])
+            package['_data'] = asyncio.create_task(
+                get_package_update_list(package['package'], package['version'])
+            )
+
+        for package in packages:
+            package_data = await package['_data']
 
             modules.append({
                 'name': package['package'],
@@ -61,25 +74,17 @@ class MonitorModulesView(BaseView):
             })
 
             if package['package'] == 'Django':
-                django_data = {
-                    'installed_version': package['version'],
-                    'newest_version': package_data['latest_release'],
-                }
+                runtime['framework_installed_version'] = package['version']
+                runtime['framework_newest_version'] = package_data['latest_release']
 
-        runtime = {
-            'platform': 'python',
-            'platform_version': sys.version,
-            'framework': 'django',
-            'framework_installed_version': django_data['installed_version'],
-            'framework_newest_version': django_data['newest_version'],
-        }
-
-        data = {
+        return {
             'runtime': runtime,
             'modules': modules,
         }
 
-        response = JsonResponse(data)
+    @access_token_check
+    def get(self, request, *args, **kwargs):
+        response = JsonResponse(asyncio.run(self.get_response_data()))
         self.add_access_control_headers(response)
         return response
 
