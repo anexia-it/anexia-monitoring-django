@@ -18,7 +18,7 @@ URL = 'https://github.com/anexia-it/anexia-monitoring-django'
 AUTHOR = 'Anexia'
 LICENSE = 'MIT'
 REQUIRED = [
-    'updatable>=0.6,<0.7',
+    'updatable>=0.7',
 ]
 CLASSIFIERS = [
         'License :: OSI Approved :: MIT License',

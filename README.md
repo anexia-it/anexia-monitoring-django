@@ -11,10 +11,11 @@ website is alive and working correctly.
 Django Compatibility Matrix
 ---------------------------
 
-If your project uses an older verison of Django, you can choose an older version of this project.
+If your project uses an older version of Django, you can choose an older version of this project.
 
 | This Project | Python Version | Django Version |
 |--------------|----------------|----------------|
+| 1.5.*        | 3.7 - 3.10     | 3.2, 4.0, 4.1  |
 | 1.4.*        | 3.7 - 3.10     | 3.2, 4.0       |
 | 1.3.*        | 3.5 - 3.9      | 2.2, 3.1, 3.2  |
 | 1.2.*        | 3.5 - 3.8      | 2.2, 3.0, 3.1  |
