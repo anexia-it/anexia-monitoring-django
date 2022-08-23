@@ -1,6 +1,7 @@
 Anexia Monitoring
 =================
 
+[![PyPI version](https://img.shields.io/pypi/v/django-anexia-monitoring.svg)](https://pypi.org/project/django-anexia-monitoring/)
 [![Linter and tests](https://github.com/anexia-it/anexia-monitoring-django/workflows/Linter%20and%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
 [![Codecov](https://img.shields.io/codecov/c/gh/anexia-it/anexia-monitoring-django)](https://codecov.io/gh/anexia-it/anexia-monitoring-django)
 
