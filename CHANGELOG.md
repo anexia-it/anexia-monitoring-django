@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -
 
 ### Changed
--
+- Distinguish between errors and warnings on up-check
+- Register built-in up-checks via the `monitor_up_check` signal
 
 ### Removed
 -
