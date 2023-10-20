@@ -7,13 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.6.0 - Unreleased]
 
 ### Added
--
+- Support for Python 3.11 and Python 3.12
+- Support for Django 4.2
 
 ### Changed
--
+- Distinguish between errors and warnings on up-check
+- Register built-in up-checks via the `monitor_up_check` signal
 
 ### Removed
--
+- Support for Python 3.7
+- Support for Django 4.0
 
 ## [1.5.0]
 

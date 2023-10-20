@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import asyncio
 import sys
 
@@ -7,6 +6,7 @@ from updatable import get_package_update_list, get_parsed_environment_package_li
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import get_user_model
 from django.db import connections
+from django.dispatch import receiver
 from django.views.generic import View
 from django.conf import settings
 
@@ -101,19 +101,47 @@ class MonitorUpView(BaseView):
 
     @access_token_check
     def get(self, request, *args, **kwargs):
-        # Test database connections
-        if getattr(settings, 'ANX_MONITORING_TEST_DB_CONNECTIONS', True):
-            for connection_key in connections:
-                connections[connection_key].cursor()
+        response_contents = []
+        response_status = 200
 
-        # Query for users
-        if getattr(settings, 'ANX_MONITORING_TEST_QUERY_USERS', True):
-            User = get_user_model()
-            User.objects.all().count()
+        # Sends signal for health check implementations
+        up_check_results = monitor_up_check.send_robust(sender=None)
+        up_check_result_warnings = [
+            r[1] for r in up_check_results
+            if isinstance(r[1], Exception) and getattr(r[1], "is_anx_monitoring_up_warning", False)
+        ]
+        up_check_result_errors = [
+            r[1]
+            for r in up_check_results
+            if isinstance(r[1], Exception) and not getattr(r[1], "is_anx_monitoring_up_warning", False)
+        ]
 
-        # Registers signal for custom check
-        monitor_up_check.send(sender=None)
+        if not up_check_result_warnings and not up_check_result_errors:
+            response_contents.append("OK")
+            response_status = 200
 
-        response = HttpResponse("OK", content_type="text/plain")
+        for up_check_result_warning in up_check_result_warnings:
+            response_contents.append("WARNING: {}".format(str(up_check_result_warning) or "-"))
+            response_status = 200
+
+        for up_check_result_error in up_check_result_errors:
+            response_contents.append("ERROR: {}".format(str(up_check_result_error) or "-"))
+            response_status = 500
+
+        response = HttpResponse("\n".join(response_contents), content_type="text/plain", status=response_status)
         self.add_access_control_headers(response)
         return response
+
+
+if getattr(settings, 'ANX_MONITORING_TEST_DB_CONNECTIONS', True):
+    @receiver(monitor_up_check)
+    def anx_monitoring_test_db_connections(sender, **kwargs):
+        for connection_key in connections:
+            connections[connection_key].cursor()
+
+
+if getattr(settings, 'ANX_MONITORING_TEST_QUERY_USERS', True):
+    @receiver(monitor_up_check)
+    def anx_monitoring_test_query_users(sender, **kwargs):
+        user_model = get_user_model()
+        user_model.objects.all().count()
