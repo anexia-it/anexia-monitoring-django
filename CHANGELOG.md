@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.6.0 - Unreleased]
 
 ### Added
-- Support for Python 3.11 and Python 3.12
-- Support for Django 4.2
+- Support for Python 3.11 and 3.12
+- Support for Django 4.2 and 5.0
 
 ### Changed
 - Distinguish between errors and warnings on up-check
@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Support for Python 3.7
-- Support for Django 4.0
+- Support for Django 3.2, 4.0, 4.1
 
 ## [1.5.0]
 

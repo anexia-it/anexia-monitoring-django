@@ -2,7 +2,7 @@
 -e .
 
 # Development dependencies
-django>=3.2.0
+django>=4.2.0, <5.1
 flake8>=5.0
 codecov>=2.1
 setuptools>=42
