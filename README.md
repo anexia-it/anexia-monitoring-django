@@ -16,6 +16,7 @@ If your project uses an older version of Django, you can choose an older version
 
 | This Project | Python Version | Django Version |
 |--------------|----------------|----------------|
+| 1.7.*        | 3.8 - 3.12     | 4.2, 5.0, 5.1  |
 | 1.6.*        | 3.8 - 3.12     | 4.2, 5.0       |
 | 1.5.*        | 3.7 - 3.10     | 3.2, 4.0, 4.1  |
 | 1.4.*        | 3.7 - 3.10     | 3.2, 4.0       |
