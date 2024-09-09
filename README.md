@@ -44,6 +44,12 @@ INSTALLED_APPS = [
 ]
 ```
 
+Go to the Version Monitoring Server insance that will connect
+to this project and generate an access token:
+
+![version monitor admin screen](vmt-gen-access-token.png)
+
+
 In the projects settings.py add the access token configuration:
 
 ```python
