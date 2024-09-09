@@ -1,8 +1,6 @@
 import asyncio
 import sys
 
-from updatable import get_package_update_list, get_parsed_environment_package_list
-
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import get_user_model
 from django.db import connections
@@ -10,6 +8,7 @@ from django.dispatch import receiver
 from django.views.generic import View
 from django.conf import settings
 
+from .core import get_python_env_info
 from .decorators import access_token_check
 from .events import monitor_up_check
 
@@ -18,6 +17,7 @@ class BaseView(View):
     """
     Base view
     """
+
     @staticmethod
     def add_access_control_headers(response):
         """
@@ -42,49 +42,9 @@ class MonitorModulesView(BaseView):
     of the module. It also contains information about the runtime (python and django version).
     """
 
-    async def get_response_data(self):
-        runtime = {
-            'platform': 'python',
-            'platform_version': sys.version,
-            'framework': 'django',
-            'framework_installed_version': None,
-            'framework_newest_version': None,
-        }
-        modules = []
-        packages = get_parsed_environment_package_list()
-
-        for package in packages:
-            package['_data'] = asyncio.create_task(
-                get_package_update_list(package['package'], package['version'])
-            )
-
-        for package in packages:
-            package_data = await package['_data']
-
-            modules.append({
-                'name': package['package'],
-                'installed_version': package['version'],
-                'installed_version_licences': [
-                    package_data['current_release_license'],
-                ],
-                'newest_version': package_data['latest_release'],
-                'newest_version_licences': [
-                    package_data['latest_release_license'],
-                ],
-            })
-
-            if package['package'] == 'Django':
-                runtime['framework_installed_version'] = package['version']
-                runtime['framework_newest_version'] = package_data['latest_release']
-
-        return {
-            'runtime': runtime,
-            'modules': modules,
-        }
-
     @access_token_check
     def get(self, request, *args, **kwargs):
-        response = JsonResponse(asyncio.run(self.get_response_data()))
+        response = JsonResponse(asyncio.run(get_python_env_info()))
         self.add_access_control_headers(response)
         return response
 
@@ -138,7 +98,6 @@ if getattr(settings, 'ANX_MONITORING_TEST_DB_CONNECTIONS', True):
     def anx_monitoring_test_db_connections(sender, **kwargs):
         for connection_key in connections:
             connections[connection_key].cursor()
-
 
 if getattr(settings, 'ANX_MONITORING_TEST_QUERY_USERS', True):
     @receiver(monitor_up_check)
