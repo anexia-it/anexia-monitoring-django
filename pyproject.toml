@@ -1,6 +1,55 @@
 [build-system]
-requires = [
-    "setuptools>=58",
-    "wheel",
-]
+requires = ["setuptools>=75", "wheel", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-anexia-monitoring"
+dynamic = ["version"]
+description = "A Django app to monitor updates for Django and installed Python packages, plus liveness checks for the running site."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Anexia", email = "opensource@anexia-it.com"}]
+urls = {Homepage = "https://github.com/anexia-it/anexia-monitoring-django"}
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Django",
+  "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "django>=5.2",
+  "updatable>=0.7",
+]
+
+[project.optional-dependencies]
+test = [
+  "coverage>=7.13.2",
+]
+dev = [
+  "pre-commit>=4.5,<4.6",
+]
+build = [
+  "build>=1.4.0",
+  "twine>=6.2.0",
+  "wheel>=0.46.3",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["anexia_monitoring*"]
+
+[tool.setuptools_scm]
