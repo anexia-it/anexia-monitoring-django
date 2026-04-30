@@ -1,7 +1,7 @@
 import asyncio
 import json
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from anexia_monitoring.core import get_python_env_info
 
 

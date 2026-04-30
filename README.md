@@ -66,15 +66,15 @@ urlpatterns = [
 Usage
 -----
 
-The plugin registers some custom REST endpoints and django management commands 
-which can be used for monitoring. Make sure that the 
-**ANX\_MONITORING\_ACCESS\_TOKEN** is defined, since this is used for 
-authorization of the endpoints. The endpoints will return a 401 HTTP\_STATUS 
+The plugin registers some custom REST endpoints and django management commands
+which can be used for monitoring. Make sure that the
+**ANX\_MONITORING\_ACCESS\_TOKEN** is defined, since this is used for
+authorization of the endpoints. The endpoints will return a 401 HTTP\_STATUS
 code if the token is not define or invalid, and a 200 status code otherwise.
 
 ### Version monitoring
 
-Returns all a list with platform and module information. Data can be retrieved 
+Returns all a list with platform and module information. Data can be retrieved
 via endpoint or django management command.
 
 **Command:** `./manage.py anxmonitormodules` output is same as endpoints response
