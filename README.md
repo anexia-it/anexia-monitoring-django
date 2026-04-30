@@ -1,31 +1,31 @@
-Anexia Monitoring
-=================
+# Anexia Monitoring
 
 [![PyPI version](https://img.shields.io/pypi/v/django-anexia-monitoring.svg)](https://pypi.org/project/django-anexia-monitoring/)
-[![Linter and tests](https://github.com/anexia-it/anexia-monitoring-django/workflows/Linter%20and%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
+[![Run linter and tests](https://github.com/anexia-it/anexia-monitoring-django/workflows/Run%20linter%20and%20tests/badge.svg)](https://github.com/anexia-it/anexia-monitoring-django/actions)
 [![Codecov](https://img.shields.io/codecov/c/gh/anexia-it/anexia-monitoring-django)](https://codecov.io/gh/anexia-it/anexia-monitoring-django)
 
 A Django app used to monitor updates for Django and all installed python
 packages in the running environment. It can be also used to check if the
 website is alive and working correctly.
 
-Django Compatibility Matrix
----------------------------
+## Django Compatibility Matrix
 
 If your project uses an older version of Django, you can choose an older version of this project.
 
-| This Project | Python Version | Django Version |
-|--------------|----------------|----------------|
-| 1.7.*        | 3.8 - 3.12     | 4.2, 5.0, 5.1  |
-| 1.6.*        | 3.8 - 3.12     | 4.2, 5.0       |
-| 1.5.*        | 3.7 - 3.10     | 3.2, 4.0, 4.1  |
-| 1.4.*        | 3.7 - 3.10     | 3.2, 4.0       |
-| 1.3.*        | 3.5 - 3.9      | 2.2, 3.1, 3.2  |
-| 1.2.*        | 3.5 - 3.8      | 2.2, 3.0, 3.1  |
-| 1.1.*        | 2.7, 3.4, 3.5  | 1.8, 1.11      |
+| This Project | Python Version               | Django Version |
+|--------------|------------------------------|----------------|
+| 1.8.*        | 3.10 - 3.14                  | 5.2, 6.0       |
+| 1.7.*        | 3.8 - 3.12                   | 4.2, 5.0, 5.1  |
+| 1.6.*        | 3.8 - 3.12                   | 4.2, 5.0       |
+| 1.5.*        | 3.7 - 3.10                   | 3.2, 4.0, 4.1  |
+| 1.4.*        | 3.7 - 3.10                   | 3.2, 4.0       |
+| 1.3.*        | 3.5 - 3.9                    | 2.2, 3.1, 3.2  |
+| 1.2.*        | 3.5 - 3.8                    | 2.2, 3.0, 3.1  |
+| 1.1.*        | 2.7, 3.4, 3.5                | 1.8, 1.11      |
 
-Installation and configuration
-------------------------------
+Note: in `1.8.*`, Django 6.0 requires Python 3.12+
+
+## Installation and configuration
 
 Install the package by using pip
 
@@ -50,21 +50,21 @@ In the projects settings.py add the access token configuration:
 ANX_MONITORING_ACCESS_TOKEN = 'custom_access_token'
 ```
 
-Add URL configuration for REST endpoint
+Add URL configuration for the REST endpoints:
 
 ```python
+from django.urls import include, path
 from anexia_monitoring import urls as monitor_urls
-...
+
 urlpatterns = [
-  ...
-  # Anexia monitoring
-  re_path(r'^', include(monitor_urls)),
-  ...
+    # ...
+    # Anexia monitoring
+    path('', include(monitor_urls)),
+    # ...
 ]
 ```
 
-Usage
------
+## Usage
 
 The plugin registers some custom REST endpoints and django management commands
 which can be used for monitoring. Make sure that the
@@ -98,10 +98,10 @@ Response body:
 {
    "platform":{
       "platform":"python",
-      "framework_installed_version":"1.11.1",
-      "framework_newest_version":"2.0a1",
+      "framework_installed_version":"5.2.0",
+      "framework_newest_version":"6.0.0",
       "framework":"django",
-      "platform_version":"3.5.3 (default, Apr 26 2017, 20:12:19) \n[GCC 4.9.2]"
+      "platform_version":"3.13.0 (main, Oct  7 2024, 23:42:00) \n[GCC 13.2.0]"
    },
    "modules":[
       {
@@ -195,12 +195,10 @@ ANX_MONITORING_TEST_QUERY_USERS = False
 ANX_MONITORING_TEST_DB_CONNECTIONS = False
 ```
 
-List of developers
-------------------
+## List of developers
 
--   Harald Nezbeda, Lead developer
+- Harald Nezbeda, Lead developer
 
-Project related external resources
-----------------------------------
+## Project related external resources
 
--   [Django documentation](https://docs.djangoproject.com/en/2.2/)
+- [Django documentation](https://docs.djangoproject.com/en/stable/)
