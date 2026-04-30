@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [1.8.0]
+
+### Added
+- Support for Python 3.13 and 3.14
+- Support for Django 5.2 and 6.0
+
+### Changed
+- Migrated packaging to `pyproject.toml` with `setuptools_scm` for versioning
+- Restructured `tests/` to the canonical `tests/{manage.py, core/, testapp/}` layout
+- Bumped GitHub Actions versions (`checkout@v5`, `setup-python@v6`, `codecov-action@v5`)
+
+### Removed
+- Support for Python 3.8 and 3.9
+- Support for Django 4.2, 5.0, and 5.1
+
 ## [1.7.0]
 
 ### Added
@@ -117,6 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 [Unreleased]: https://github.com/anexia-it/anexia-monitoring-django/
+[1.8.0]: https://pypi.org/project/django-anexia-monitoring/1.8.0/
 [1.7.0]: https://pypi.org/project/django-anexia-monitoring/1.7.0/
 [1.6.0]: https://pypi.org/project/django-anexia-monitoring/1.6.0/
 [1.5.0]: https://pypi.org/project/django-anexia-monitoring/1.5.0/
