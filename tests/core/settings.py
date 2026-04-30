@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Anexia monitor
     "anexia_monitoring",
+    # Test app
+    "testapp",
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "test_project.urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
@@ -69,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "test_project.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
